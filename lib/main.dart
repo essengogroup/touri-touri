@@ -1,8 +1,19 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:touritouri/screens/index.dart';
+import 'package:touritouri/screens/onboarding/onboarding_page.dart';
 
-void main() {
+int ? isViewed;
+void main() async{
+  //Cette ligne permet de changer le style de la barre au dessus de l'appBar
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(statusBarColor: Colors.transparent)
+  );
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  isViewed = preferences.getInt("onBoard");
   runApp(const MyApp());
 }
 
@@ -33,7 +44,7 @@ class MyApp extends StatelessWidget {
               ),
             ],
           ),
-          nextScreen: const Index(),
+          nextScreen: isViewed != 0 ? Onboard() : Index(),
           splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Colors.blue
       )
