@@ -9,7 +9,7 @@ int ? isViewed;
 void main() async{
   //Cette ligne permet de changer le style de la barre au dessus de l'appBar
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(statusBarColor: Colors.transparent)
+    const SystemUiOverlayStyle(statusBarColor: Colors.transparent)
   );
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();

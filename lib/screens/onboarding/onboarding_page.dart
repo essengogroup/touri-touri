@@ -44,7 +44,7 @@ class _OnboardState extends State<Onboard> {
         actions: [
           TextButton(onPressed: () async {
             await _storeOnboardInfo();
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Index()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Index()));
 
           }, child: Text("Passer",style:TextStyle(
             color: currentIndex %2 == 0 ? Kblack : Kwhite,
@@ -52,11 +52,11 @@ class _OnboardState extends State<Onboard> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: PageView.builder(
           itemCount: screens.length,
           controller: _pageController,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           onPageChanged: (int index) {
             setState(() {
               currentIndex = index;
@@ -69,7 +69,7 @@ class _OnboardState extends State<Onboard> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset(screens[index].image),
-                Container(
+                SizedBox(
                     height: 10.0,
                     child: ListView.builder(
                       itemCount: screens.length,
@@ -80,7 +80,7 @@ class _OnboardState extends State<Onboard> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              margin: EdgeInsets.symmetric(horizontal: 3.0),
+                              margin: const EdgeInsets.symmetric(horizontal: 3.0),
                               width: currentIndex == index ? 25.0 : 8.0,
                               height: 8.0,
                               decoration: BoxDecoration(
@@ -115,15 +115,15 @@ class _OnboardState extends State<Onboard> {
                     if (index == screens.length - 1){
                       await _storeOnboardInfo();
                       Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) =>Index())
+                          MaterialPageRoute(builder: (context) =>const Index())
                       );
                     }
 
-                    _pageController.nextPage(duration: Duration(milliseconds: 300),
+                    _pageController.nextPage(duration: const Duration(milliseconds: 300),
                         curve: Curves.decelerate);
                   },
                   child: Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                         horizontal: 30.0, vertical: 10.0
                     ),
                     decoration: BoxDecoration(
@@ -139,7 +139,7 @@ class _OnboardState extends State<Onboard> {
                               color:  index %2 == 0 ? Kwhite : Kblue
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15.0,
                         ),
                         Icon(
