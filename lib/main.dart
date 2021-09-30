@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:touritouri/screens/index.dart';
-import 'package:touritouri/screens/onboarding/onboarding_page.dart';
+import 'package:touritouri/screens/onboarding_page/onboarding_page.dart';
 
 int ? isViewed;
 void main() async{
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: AnimatedSplashScreen(
-          duration: 100000,
+          duration: 1000,
           splash: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

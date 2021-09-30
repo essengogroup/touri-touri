@@ -31,11 +31,11 @@ class _IndexState extends State<Index> {
         size: 30,
       ),
       const Icon(
-        Icons.search,
+        Icons.celebration_outlined,
         size: 30,
       ),
       const Icon(
-        Icons.settings,
+        Icons.military_tech_outlined,
         size: 30,
       ),
       const Icon(
@@ -44,7 +44,7 @@ class _IndexState extends State<Index> {
       ),
     ];
     return SafeArea(
-      // top: false,
+      //top: false,
       child: ClipRect(
         child: Scaffold(
           extendBody: true,

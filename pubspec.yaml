@@ -28,9 +28,9 @@ dev_dependencies:
 
   # 1a1a1a run: flutter clean && flutter pub get && flutter pub run flutter_native_splash:create
 flutter_native_splash:
-  color: "#4756DF"
-  color_dark: "#4756DF"
-  image: assets/images/logo_splash.jpg
+  color: "#2196F3"
+  color_dark: "#2196F3"
+  image: assets/images/logo_splash.png
   android: true
   ios: true
   # android_gravity: fill
@@ -58,7 +58,7 @@ flutter:
     - assets/images/r-02.jpg
     - assets/images/r-03.jpg
     - assets/images/logo1.jpg
-    - assets/images/logo_splash.jpg
+    - assets/images/logo_splash.png
     - assets/images/logo_icon.jpg
 
   # fonts:

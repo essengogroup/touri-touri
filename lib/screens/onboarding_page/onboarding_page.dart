@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:touritouri/models/onboard/onboard_model.dart';
+import 'package:touritouri/screens/index.dart';
 import 'package:touritouri/screens/login_register/login.dart';
 import 'package:touritouri/utils/constant.dart';
 
@@ -37,9 +38,9 @@ class _OnboardState extends State<Onboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: currentIndex %2 == 0 ? Kwhite : Kblue,
+      backgroundColor: Kwhite ,
       appBar: AppBar(
-        backgroundColor: currentIndex %2 == 0 ? Kwhite : Kblue,
+        backgroundColor:  Kwhite ,
         elevation: 0,
         actions: [
           TextButton(onPressed: () async {
@@ -99,7 +100,7 @@ class _OnboardState extends State<Onboard> {
                     style:TextStyle(
                       fontSize: 27.0,
                       fontWeight: FontWeight.bold,
-                      color: index %2 == 0 ? Kblack : Kwhite,
+                      color: Kblack,
                     )
                 ),
                 Text(
@@ -107,7 +108,7 @@ class _OnboardState extends State<Onboard> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14.0,
-                    color: index %2 == 0 ? Kblack : Kwhite,
+                    color: Kblack,
                   ),
                 ),
                 InkWell(
@@ -115,7 +116,7 @@ class _OnboardState extends State<Onboard> {
                     if (index == screens.length - 1){
                       await _storeOnboardInfo();
                       Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) =>const Login())
+                          MaterialPageRoute(builder: (context) =>const Index())
                       );
                     }
 
@@ -127,7 +128,7 @@ class _OnboardState extends State<Onboard> {
                         horizontal: 30.0, vertical: 10.0
                     ),
                     decoration: BoxDecoration(
-                        color: index %2 == 0 ? Kblue : Kwhite,
+                        color: Kblue ,
                         borderRadius: BorderRadius.circular(15.0)
                     ),
                     child: Row(
@@ -136,7 +137,7 @@ class _OnboardState extends State<Onboard> {
                         Text("Suivant",
                           style: TextStyle(
                               fontSize: 16.0,
-                              color:  index %2 == 0 ? Kwhite : Kblue
+                              color: Kwhite
                           ),
                         ),
                         const SizedBox(
@@ -144,7 +145,7 @@ class _OnboardState extends State<Onboard> {
                         ),
                         Icon(
                           Icons.arrow_forward_ios,
-                          color: index %2 == 0 ? Kwhite : Kblue,
+                          color: Kwhite,
                         )
                       ],
                     ),
