@@ -13,7 +13,7 @@ class OnboardModel{
 }
 
 List<OnboardModel> screens = <OnboardModel>[
-  OnboardModel(image: "assets/images/web.jpg", text: "text 0", description: "description 0", background: Colors.white, button: Color(0xFF4756DF)),
-  OnboardModel(image: "assets/images/web.jpg", text: "text 1", description: "description 1", background: Colors.white, button: Color(0xFF4756DF)),
-  OnboardModel(image: "assets/images/web.jpg", text: "text 2", description: "description 2", background: Colors.white, button: Color(0xFF4756DF)),
+  OnboardModel(image: "assets/images/Onb01.png", text: "Reservation", description: " ", background: Colors.white, button: Color(0xFF4756DF)),
+  OnboardModel(image: "assets/images/Onb02.png", text: "Visiter", description: " ", background: Colors.white, button: Color(0xFF4756DF)),
+  OnboardModel(image: "assets/images/Onb03.png", text: "Commercer l'aventure", description: " ", background: Colors.white, button: Color(0xFF4756DF)),
 ];

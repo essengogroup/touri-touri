@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:touritouri/widgets/app_bar_widget.dart';
 
 class TrophyPage extends StatefulWidget {
   const TrophyPage({Key? key}) : super(key: key);
@@ -10,7 +11,8 @@ class TrophyPage extends StatefulWidget {
 class _TrophyPageState extends State<TrophyPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
+      appBar: appBarWidget(context),
       body: Center(child: Text('Page Prophet'),),
     );
   }

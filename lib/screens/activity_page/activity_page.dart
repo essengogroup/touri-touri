@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:touritouri/widgets/app_bar_widget.dart';
 
 class ActivityPage extends StatefulWidget {
   const ActivityPage({Key? key}) : super(key: key);
@@ -10,8 +11,9 @@ class ActivityPage extends StatefulWidget {
 class _ActivityPageState extends State<ActivityPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('page Activity'),),
+    return  Scaffold(
+      appBar: appBarWidget(context),
+      body: const Center(child: Text('page Activity'),),
     );
   }
 }
