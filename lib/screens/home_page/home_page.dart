@@ -5,6 +5,7 @@ import 'package:touritouri/screens/home_page/guides.dart';
 import 'package:touritouri/screens/home_page/region.dart';
 import 'package:touritouri/screens/home_page/restos.dart';
 import 'package:touritouri/screens/home_page/sites.dart';
+import 'package:touritouri/widgets/app_bar_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedindex = 0;
   final List<TabBarHome> _contenttab = [
     TabBarHome(icon: FontAwesomeIcons.globeAfrica, texte: 'regions'),
     TabBarHome(icon: FontAwesomeIcons.mapMarkedAlt, texte: 'sites'),
@@ -40,8 +40,8 @@ class _HomePageState extends State<HomePage> {
             _contenttab[index].icon,
             size: 25.0,
           ),
-          SizedBox(height: 2.0),
-          Text(_contenttab[index].texte,style: TextStyle(color: Color(0xFFB4C1C4)),)
+          const SizedBox(height: 2.0),
+          Text(_contenttab[index].texte,)
         ],
       ),
     );
@@ -49,16 +49,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          title: Text('Touri-Touri',style: TextStyle(color: Colors.black),),
-          actions: [
-            IconButton(
-                onPressed: null,
-                icon: Icon(Icons.shopping_cart,)),
-          ],
-        ),
+        appBar: appBarWidget(context),
         body: Column(
           children: <Widget>[
             /*const Padding(
@@ -77,21 +68,18 @@ class _HomePageState extends State<HomePage> {
               length: _contenttab.length,
               child: Column(
                 children: [
-                  Container(
-                    child: TabBar(
-                      unselectedLabelColor: Color(0xFFB4C1C4),
-                      indicatorColor: Color(0xFFB4C1C4),
-                      indicatorSize: TabBarIndicatorSize.label,
-                      indicator: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: Theme.of(context).primaryColorLight,
-                      ),
-                      tabs: _contenttab
-                          .asMap()
-                          .entries
-                          .map((e) => _builTabBar(e.key))
-                          .toList(),
+                  TabBar(
+                    unselectedLabelColor: const Color(0xFFB4C1C4),
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30.0),
+                      color:Theme.of(context).primaryColorLight,
                     ),
+                    tabs: _contenttab
+                        .asMap()
+                        .entries
+                        .map((e) => _builTabBar(e.key))
+                        .toList(),
                   ),
                   Expanded(child: TabBarView(
                     children: _contentTabView,

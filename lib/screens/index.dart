@@ -44,7 +44,7 @@ class _IndexState extends State<Index> {
       ),
     ];
     return SafeArea(
-      top: false,
+      // top: false,
       child: ClipRect(
         child: Scaffold(
           extendBody: true,
