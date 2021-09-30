@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:touritouri/models/onboard/onboard_model.dart';
-import 'package:touritouri/screens/index.dart';
+import 'package:touritouri/screens/login_register/login.dart';
 import 'package:touritouri/utils/constant.dart';
 
 class Onboard extends StatefulWidget {
@@ -44,7 +44,7 @@ class _OnboardState extends State<Onboard> {
         actions: [
           TextButton(onPressed: () async {
             await _storeOnboardInfo();
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Index()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login()));
 
           }, child: Text("Passer",style:TextStyle(
             color: currentIndex %2 == 0 ? Kblack : Kwhite,
@@ -115,7 +115,7 @@ class _OnboardState extends State<Onboard> {
                     if (index == screens.length - 1){
                       await _storeOnboardInfo();
                       Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) =>const Index())
+                          MaterialPageRoute(builder: (context) =>const Login())
                       );
                     }
 
