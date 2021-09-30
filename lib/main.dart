@@ -29,20 +29,29 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: AnimatedSplashScreen(
-          duration: 2500,
-          splash: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon( Icons.home,
-                size: 50,
-              ),
-              Text("Touri-Touri",
-                style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.white,
-                )
-              ),
-            ],
+          duration: 100000,
+          splash: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0) ,
+                  child: Image.asset(
+                    "assets/images/logo1.jpg",
+                    width: 60.0,
+                    height: 60.0,),
+                ),
+                const SizedBox(
+                  height:4.0
+                ),
+                const Text("Touri-Touri",
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.white,
+                  )
+                ),
+              ],
+            ),
           ),
           nextScreen: isViewed != 0 ? const Onboard() : const Index(),
           splashTransition: SplashTransition.fadeTransition,
