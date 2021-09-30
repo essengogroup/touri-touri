@@ -7,17 +7,8 @@ AppBar appBarWidget(BuildContext context){
     elevation: 0,
     backgroundColor: Colors.transparent,
     title: Row(
-      children:  [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Image.asset('assets/images/logo1.jpg',
-            height: 50,
-            width: 50,
-            fit: BoxFit.cover,
-          ),
-        ),
-        const SizedBox(width: 4.0,),
-        const Text('Touri-Touri',style: TextStyle(color: Colors.black),)
+      children:  const [
+        Text('Touri-Touri',style: TextStyle(color: Colors.black),)
       ],
     ),
     actions:  [

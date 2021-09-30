@@ -18,14 +18,14 @@ class _HomePageState extends State<HomePage> {
   final List<TabBarHome> _contenttab = [
     TabBarHome(icon: FontAwesomeIcons.globeAfrica, texte: 'regions'),
     TabBarHome(icon: FontAwesomeIcons.mapMarkedAlt, texte: 'sites'),
-    TabBarHome(icon: FontAwesomeIcons.utensils, texte: 'restos'),
-    TabBarHome(icon: FontAwesomeIcons.running, texte: 'guides'),
+    //TabBarHome(icon: FontAwesomeIcons.utensils, texte: 'restos'),
+    //TabBarHome(icon: FontAwesomeIcons.running, texte: 'guides'),
   ];
   final List<Widget> _contentTabView = [
     Region(),
     Sites(),
-    Restos(),
-    Guides(),
+   // Restos(),
+    //Guides(),
   ];
 
   Widget _builTabBar(int index) {
@@ -52,16 +52,6 @@ class _HomePageState extends State<HomePage> {
         appBar: appBarWidget(context),
         body: Column(
           children: <Widget>[
-            /*const Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 80.0),
-              child: Text(
-                "Visiter la destination de votre choix",
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),*/
             const SizedBox(height: 20.0),
             Expanded(
                 child: DefaultTabController(

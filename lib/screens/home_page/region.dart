@@ -60,12 +60,21 @@ class _RegionState extends State<Region> {
             )),
           ),
         ),
-        SizedBox(height: 16.0),
+        SizedBox(height: 10.0),
         Container(
           height: 250,
           margin: EdgeInsets.symmetric(vertical: 2.0,horizontal: 16.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              'assets/images/imghome.jpeg',
+              fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            ),
+          ),
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.blue.withOpacity(0.32),
               borderRadius:  BorderRadius.only(
                 topLeft:  Radius.circular(20.0),
                 topRight:  Radius.circular(20.0),
