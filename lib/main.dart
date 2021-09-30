@@ -2,7 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:touritouri/screens/login_register/login.dart';
+import 'package:touritouri/screens/index.dart';
 import 'package:touritouri/screens/onboarding/onboarding_page.dart';
 
 int ? isViewed;
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
               ),
             ],
           ),
-          nextScreen: isViewed != 0 ? Onboard() : Login(),
+          nextScreen: isViewed != 0 ? const Onboard() : const Index(),
           splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Colors.blue
       )
