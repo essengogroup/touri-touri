@@ -13,7 +13,7 @@ class _SitesState extends State<Sites> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: ListView.builder(
-        itemCount: 40,
+        itemCount: 3,
         itemBuilder: (context, index) {
           return builCard(index, context);
         },
@@ -31,7 +31,7 @@ class _SitesState extends State<Sites> {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(
-              'assets/images/r-03.jpg',
+              'assets/datas/r$index.jpg',
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -51,14 +51,14 @@ class _SitesState extends State<Sites> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text( 'resto $index',
+                    Text( 'Site touristique $index',
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 17,
                           fontWeight: FontWeight.bold
                       ),),
                     const SizedBox(height: 6),
-                    Text( 'Description resto $index',
+                    Text( 'Description du site $index',
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,

@@ -17,6 +17,7 @@ dependencies:
   animated_splash_screen: ^1.1.0
   shared_preferences: ^2.0.8
   font_awesome_flutter: ^9.1.0
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +62,14 @@ flutter:
     - assets/images/imghome.jpeg
     - assets/images/logo_splash.png
     - assets/images/logo_icon.jpg
+    - assets/datas/00.JPG
+    - assets/datas/01.JPG
+    - assets/datas/02.JPG
+    - assets/datas/03.JPG
+    - assets/datas/r0.jpg
+    - assets/datas/r1.jpg
+    - assets/datas/r2.jpg
+    - assets/f.png
 
   # fonts:
   #   - family: Schyler
