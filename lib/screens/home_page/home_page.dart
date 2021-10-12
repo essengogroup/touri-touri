@@ -15,12 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<TabBarHome> _contenttab = [
-    TabBarHome(icon: FontAwesomeIcons.globeAfrica, texte: 'regions'),
-    TabBarHome(icon: FontAwesomeIcons.mapMarkedAlt, texte: 'sites'),
-    //TabBarHome(icon: FontAwesomeIcons.utensils, texte: 'restos'),
-    //TabBarHome(icon: FontAwesomeIcons.running, texte: 'guides'),
-  ];
   final List<Widget> _contentTabView = [
     Region(),
     Sites(),
@@ -28,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     //Guides(),
   ];
 
+/*
   Widget _builTabBar(int index) {
     return Container(
       height: 62.0,
@@ -46,7 +41,9 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+*/
 
+/*
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: appBarWidget(context),
@@ -80,4 +77,30 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       );
+*/
+
+  @override
+  Widget build(BuildContext context) =>DefaultTabController(
+    length: 2,
+    child: Scaffold(
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              sliverAppWidget(
+                  context,
+                  const TabBar(
+                  isScrollable: true,
+                  tabs: [
+                    Tab(child: Text('regions')),
+                    Tab(child: Text('sites')),
+                  ],
+                )
+              ),
+            ];
+          },
+          body: TabBarView(
+            children:_contentTabView,
+          ),
+        )),
+  );
 }

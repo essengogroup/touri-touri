@@ -26,3 +26,25 @@ AppBar appBarWidget(BuildContext context){
     ],
   );
 }
+
+SliverAppBar sliverAppWidget(BuildContext context,TabBar? bottom){
+ return  SliverAppBar(
+   title: Text('Touri-Touri'),
+   pinned: true,
+   floating: true,
+   actions:  [
+     const IconButton(
+         onPressed: null,
+         icon: Icon(Icons.shopping_cart,)
+     ),
+     IconButton(
+         onPressed: () {
+           Navigator.push(context, MaterialPageRoute(builder: (context) => const About()) );
+         },
+         icon: Icon(Icons.info_outline,
+           color: Kgrey,)
+     ),
+   ],
+   bottom: bottom,
+ );
+}
