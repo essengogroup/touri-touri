@@ -12,16 +12,16 @@ AppBar appBarWidget(BuildContext context){
       ],
     ),
     actions:  [
-      const IconButton(
+       IconButton(
           onPressed: null,
-          icon: Icon(Icons.shopping_cart,)
+          icon: Icon(Icons.shopping_cart,color: Kwhite,)
       ),
       IconButton(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => const About()) );
           },
           icon: Icon(Icons.info_outline,
-          color: Kgrey,)
+          color: Kwhite,)
       ),
     ],
   );
