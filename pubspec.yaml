@@ -18,6 +18,7 @@ dependencies:
   shared_preferences: ^2.0.8
   font_awesome_flutter: ^9.1.0
   carousel_slider: ^4.0.0
+  page_transition: ^2.0.1-nullsafety.0
 
 dev_dependencies:
   flutter_test:
@@ -69,7 +70,8 @@ flutter:
     - assets/datas/r0.jpg
     - assets/datas/r1.jpg
     - assets/datas/r2.jpg
-    - assets/f.png
+    - assets/bg01.png
+    - assets/bg02.png
 
   # fonts:
   #   - family: Schyler

@@ -27,7 +27,7 @@ AppBar appBarWidget(BuildContext context){
   );
 }
 
-SliverAppBar sliverAppWidget(BuildContext context,TabBar? bottom){
+SliverAppBar sliverAppWidget({required BuildContext context,TabBar? bottom}){
  return  SliverAppBar(
    title: Text('Touri-Touri'),
    pinned: true,

@@ -13,7 +13,7 @@ class _TrophyPageState extends State<TrophyPage> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: appBarWidget(context),
-      body: Center(child: Text('Page Prophet'),),
+      body: const Center(child: Text('Page Prophet'),),
     );
   }
 }
