@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:touritouri/models/region_model.dart';
 import 'package:touritouri/screens/home_page/region_site.dart';
+import 'package:touritouri/services/region_api.dart';
+import 'package:touritouri/widgets/build_card_region.dart';
 
 class Region extends StatefulWidget {
   const Region({Key? key}) : super(key: key);
@@ -11,8 +14,34 @@ class Region extends StatefulWidget {
 }
 
 class _RegionState extends State<Region> {
+  late Future<List<RegionModel>> getAllRegion;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getAllRegion = RegionApi.getAllRegion();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<RegionModel>>(
+        future: getAllRegion,
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return const Center(child: CircularProgressIndicator());
+            default:
+              if (snapshot.hasError) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                return buildCorp(snapshot.data!);
+              }
+          }
+        });
+  }
+
+  Widget buildCorp(List<RegionModel> regions) {
     return Stack(
       children: [
         Positioned(
@@ -37,68 +66,11 @@ class _RegionState extends State<Region> {
           child: SizedBox(
             height: 400,
             width: MediaQuery.of(context).size.width,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(
-                    3,
-                    (index) => Container(
-                          margin: const EdgeInsets.only(
-                              left: 20, right: 15, top: 20, bottom: 20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  offset: const Offset(0, 4),
-                                  blurRadius: 20,
-                                  color:
-                                      const Color(0xFFB0CCE1).withOpacity(0.32),
-                                )
-                              ]),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    PageTransition(
-                                        type: PageTransitionType.scale,
-                                        alignment: Alignment.bottomCenter,
-                                        duration: const Duration(seconds: 1),
-                                        child: const RegionSite()));
-                              },
-                              splashColor: Colors.blue.withOpacity(0.4),
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(bottom: 15),
-                                      padding: const EdgeInsets.all(25),
-                                      child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(100),
-                                          child: Image.asset(
-                                            'assets/datas/r$index.jpg',
-                                            width: 200,
-                                            height: 200,
-                                            fit: BoxFit.cover,
-                                          )),
-                                    ),
-                                    Text('region $index'),
-                                    const SizedBox(height: 10),
-                                    const Text(
-                                      "3 sites à visiter",
-                                      style: TextStyle(fontSize: 12),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        )),
-              ),
+            child: ListView.builder(
+              itemCount: regions.length,
+              itemBuilder: (context, index) {
+                return builCardRegion(context,regions,index);
+              },
             ),
           ),
         ),
