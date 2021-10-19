@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class User{
   late int? id;
-  late String name,first_name,address,email,phone,password;
+  late String? name,first_name,address,email,phone,password;
 
   User({
     this.id,
-    required this.name,
-    required this.first_name,
-    required this.address,
-    required this.email,
-    required this.phone,
-    required this.password,
+    this.name,
+    this.first_name,
+    this.address,
+    this.email,
+    this.phone,
+    this.password,
   });
 
   factory User.fromJson(Map<String,dynamic> json){

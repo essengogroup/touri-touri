@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:touritouri/models/user.dart';
 import 'package:touritouri/screens/index.dart';
 import 'package:touritouri/screens/login_register/register.dart';
+import 'package:touritouri/utils/app_url.dart';
 import 'package:touritouri/utils/constant.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,6 +18,37 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  late TextEditingController _controllerLogin;
+  late TextEditingController _controllerPassword;
+
+  Future<Map<String, dynamic>> fetchUser(String email, String password) async {
+
+    final response = await http.post(
+      Uri.parse(AppUrl.URL_LOGIN),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, dynamic>{
+        'email': "user1@mail.com",
+        'password': "123456789",
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      print(response.statusCode);
+      print(jsonDecode(response.body));
+      return jsonDecode(response.body);
+    } else {
+      throw Exception('connexion impossible');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controllerLogin = TextEditingController();
+    _controllerPassword = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +122,7 @@ class _LoginState extends State<Login> {
                             children: [
                               TextField(
                                 keyboardType: TextInputType.emailAddress,
+                                controller: _controllerLogin,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(8.0),
@@ -105,7 +141,7 @@ class _LoginState extends State<Login> {
                                 height: 20.0,
                               ),
                               TextField(
-                                keyboardType: TextInputType.visiblePassword,
+                                controller: _controllerPassword,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(8.0),
@@ -122,11 +158,18 @@ class _LoginState extends State<Login> {
                               ),const SizedBox(
                                 height: 50.0,
                               ),
-                              Container(
+                              SizedBox(
                                 width: double.infinity,
                                 child: RaisedButton(
                                   onPressed: (){
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Index()));
+                                    setState(() {
+
+                                    });
+                                    String email = _controllerLogin.text;
+                                    String password = (_controllerPassword.text).toString();
+                                    print("email ="+email +"\nmdp = "+password);
+
+                                    fetchUser(email,password);
                                   },
                                   color: Colors.blue[800],
                                   child: const Padding(

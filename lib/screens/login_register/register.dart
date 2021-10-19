@@ -14,12 +14,12 @@ Future<User> createUser(User user) async{
       'Content-Type':'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String,String>{
-      "name":user.name,
-      "first_name":user.first_name,
-      "adress":user.address,
-      "email":user.email,
-      "phone":user.phone,
-      "password":user.password
+      "name":user.name!,
+      "first_name":user.first_name!,
+      "adress":user.address!,
+      "email":user.email!,
+      "phone":user.phone!,
+      "password":user.password!
     }),
   );
 
