@@ -22,7 +22,7 @@ class _LoginState extends State<Login> {
   late TextEditingController _controllerPassword;
 
   Future login() async {
-    var response = await http.post(Uri.parse(BaseApi.URL_REGISTER), body: {
+    var response = await http.post(Uri.parse(BaseApi.URL_LOGIN), body: {
       "email": _controllerLogin.text,
       "password": _controllerPassword.text,
     });

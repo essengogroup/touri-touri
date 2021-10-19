@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import'package:flutter/material.dart';
+import 'package:touritouri/constants/base_api.dart';
 import 'package:touritouri/models/user.dart';
 import 'package:touritouri/screens/index.dart';
 import 'package:touritouri/screens/login_register/login.dart';
@@ -55,14 +56,13 @@ class _RegisterState extends State<Register> {
   }
 
   Future register() async {
-    var url = "http://10.0.2.2:8000/api/v1/create-account";
-    var response = await http.post(Uri.parse(url), body: {
-      "name":"user6",
-      "first_name":"user6",
-      "address":"adress7",
-      "phone":"069443279",
-      "email":"user6@mail.com",
-      "password":"123456789"
+    var response = await http.post(Uri.parse(BaseApi.URL_REGISTER), body: {
+      "name":_controllerName.text,
+      "first_name":_controllerFirstName.text,
+      "address":_controllerAdress.text,
+      "phone":_controllerPhone.text,
+      "email":_controllerEmail.text,
+      "password":_controllerPassword.text
     });
 
     Map<String, dynamic> datas = json.decode(response.body);
