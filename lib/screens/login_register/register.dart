@@ -38,7 +38,9 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final _formKey = GlobalKey<FormState>();
+
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerFirstName = TextEditingController();
   final TextEditingController _controllerAdress = TextEditingController();
@@ -46,37 +48,27 @@ class _RegisterState extends State<Register> {
   final TextEditingController _controllerPhone = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
 
-  Future<User> ? _futureUser;
-
-
   bool isEmail(String em) {
     String p = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regExp = RegExp(p);
     return regExp.hasMatch(em);
   }
-  void validator(){
-    final FormState? _formState =_formKey.currentState;
-    User user = User(
-      name: _controllerName.text,
-      first_name: _controllerFirstName.text,
-      address: _controllerAdress.text,
-      email: _controllerEmail.text,
-      phone: _controllerPhone.text,
-      password: _controllerPassword.text,
-    );
 
-    _futureUser = createUser(user);
+  Future register() async {
+    var url = "http://10.0.2.2:8000/api/v1/create-account";
+    var response = await http.post(Uri.parse(url), body: {
+      "name":"user6",
+      "first_name":"user6",
+      "address":"adress7",
+      "phone":"069443279",
+      "email":"user6@mail.com",
+      "password":"123456789"
+    });
 
-    /*if (_formState!.validate()){
+    Map<String, dynamic> datas = json.decode(response.body);
 
+    print(datas);
 
-      print(user.toString());
-      //_futureUser = createUser(user);
-
-      //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Index()));
-
-    }else{
-    }*/
   }
 
   @override
@@ -293,8 +285,8 @@ class _RegisterState extends State<Register> {
                                   width: double.infinity,
                                   child: RaisedButton(
                                     onPressed: (){
-                                      validator();
-                                      },
+                                      register();
+                                    },
                                     color: Colors.blue[800],
                                     child: const Padding(
                                       padding: EdgeInsets.symmetric(vertical: 16.0),
