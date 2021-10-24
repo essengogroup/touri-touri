@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          nextScreen: isViewed != 0 ? const Onboard() : const Login(),
+          nextScreen: isViewed != 0 ? const Onboard() : const Index(),
           splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Colors.blue
       )

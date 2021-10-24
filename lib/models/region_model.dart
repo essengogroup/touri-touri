@@ -5,10 +5,11 @@ part 'region_model.g.dart';
 class RegionModel{
   final int id;
   final String name;
+  final String imagePath;
   final int nbrSite;
   final String updatedAt;
 
-  RegionModel({required this.id,required this.name,required this.nbrSite,required this.updatedAt});
+  RegionModel({required this.id,required this.name,required this.imagePath,required this.nbrSite,required this.updatedAt});
 
   factory RegionModel.fromJson(Map<String, dynamic> json)=>_$RegionModelFromJson(json);
 
@@ -16,6 +17,6 @@ class RegionModel{
 
   @override
   String toString() {
-    return 'RegionModel{id: $id, name: $name, nbrSite: $nbrSite, updatedAt: $updatedAt}';
+    return 'RegionModel{id: $id, name: $name, imagePath: $imagePath, nbrSite: $nbrSite, updatedAt: $updatedAt}';
   }
 }

@@ -6,7 +6,7 @@ import 'package:touritouri/models/region_model.dart';
 class RegionApi{
 
   static Future<List<RegionModel>> getAllRegion() async{
-    final String url= BaseApi.baseOffLine + 'region';
+    const String url= BaseApi.baseUrl + 'region';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final body = json.decode(response.body) as List;
