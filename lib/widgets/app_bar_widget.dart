@@ -5,23 +5,18 @@ import 'package:touritouri/utils/constant.dart';
 AppBar appBarWidget(BuildContext context){
   return AppBar(
     elevation: 0,
-    backgroundColor: Colors.transparent,
-    title: Row(
-      children:  const [
-        Text('Touri-Touri',style: TextStyle(color: Colors.black),)
-      ],
-    ),
+    title: const Text('Touri-Touri',style: TextStyle(color: Colors.white),),
     actions:  [
-       IconButton(
+       const IconButton(
           onPressed: null,
-          icon: Icon(Icons.shopping_cart,color: Kwhite,)
+          icon: Icon(Icons.shopping_cart,color: Colors.white,)
       ),
       IconButton(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => const About()) );
           },
-          icon: Icon(Icons.info_outline,
-          color: Kwhite,)
+          icon: const Icon(Icons.info_outline,
+          color: Colors.white,)
       ),
     ],
   );
@@ -29,20 +24,20 @@ AppBar appBarWidget(BuildContext context){
 
 SliverAppBar sliverAppWidget({required BuildContext context,TabBar? bottom}){
  return  SliverAppBar(
-   title: Text('Touri-Touri'),
+   title: const Text('Touri-Touri'),
    pinned: true,
    floating: true,
    actions:  [
      const IconButton(
          onPressed: null,
-         icon: Icon(Icons.shopping_cart,)
+         icon: Icon(Icons.shopping_cart,color: Colors.white,)
      ),
      IconButton(
          onPressed: () {
            Navigator.push(context, MaterialPageRoute(builder: (context) => const About()) );
          },
-         icon: Icon(Icons.info_outline,
-           color: Kgrey,)
+         icon: const Icon(Icons.info_outline,
+           color: Colors.white,)
      ),
    ],
    bottom: bottom,
