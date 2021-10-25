@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:touritouri/models/region_model.dart';
 import 'package:touritouri/screens/home_page/region_site.dart';
 
-Widget builCardRegion(BuildContext context,List<RegionModel> regions, int index){
+Widget builCardRegion(
+    {required BuildContext context,required List<RegionModel> regions, required index}) {
   return Container(
     margin: const EdgeInsets.only(
         left: 20, right: 15, top: 20, bottom: 20),
@@ -29,7 +29,7 @@ Widget builCardRegion(BuildContext context,List<RegionModel> regions, int index)
                   type: PageTransitionType.scale,
                   alignment: Alignment.bottomCenter,
                   duration: const Duration(seconds: 1),
-                  child: const RegionSite()));
+                  child: RegionSite(regionModels: regions,regionModelCurrent: regions[index],)));
         },
         splashColor: Colors.blue.withOpacity(0.4),
         child: Padding(
@@ -43,19 +43,20 @@ Widget builCardRegion(BuildContext context,List<RegionModel> regions, int index)
                 child: ClipRRect(
                     borderRadius:
                     BorderRadius.circular(100),
-                    child: const FlutterLogo(size: 200.0,)
-                  /*Image.asset(
-                      'assets/datas/r$index.jpg',
+                    child:  Image.network(
+                      regions[index].imagePath,
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
-                    )*/
+                    )
+
                 ),
               ),
-              Text(regions[index].name),
+              Text(regions[index].name, style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),),
               const SizedBox(height: 10),
-               Text(
-                "${regions[index].nbrSite} sites à visiter",
+              Text(
+                "${regions[index].nbrSite} sites disponible",
                 style: const TextStyle(fontSize: 12),
               )
             ],

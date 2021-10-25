@@ -4,6 +4,7 @@ import 'package:touritouri/models/tabbarHome/tabBarHome.dart';
 import 'package:touritouri/screens/home_page/region.dart';
 import 'package:touritouri/screens/home_page/sites.dart';
 import 'package:touritouri/widgets/app_bar_widget.dart';
+import 'package:flutter_cart/flutter_cart.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
     const Region(),
     const Sites(),
   ];
+  var cart = FlutterCart();
   @override
   Widget build(BuildContext context) =>DefaultTabController(
     length: 2,

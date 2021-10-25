@@ -137,7 +137,7 @@ class _PersonPageState extends State<PersonPage> {
     return Container(
       color: Colors.grey,
       child: Image.network(
-        'https://source.unsplash.com/random',
+        'https://picsum.photos/200',
         width: double.infinity,
         height: coverHeight,
         fit: BoxFit.cover,
@@ -164,7 +164,7 @@ class _PersonPageState extends State<PersonPage> {
         radius: profilHeight / 2,
         backgroundColor: Colors.grey.shade800,
         backgroundImage:
-            NetworkImage('https://source.unsplash.com/user/erondu/1600x900'),
+            NetworkImage('https://picsum.photos/200'),
       ),
     );
   }

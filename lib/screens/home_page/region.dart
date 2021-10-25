@@ -44,22 +44,6 @@ class _RegionState extends State<Region> {
   Widget buildCorp(List<RegionModel> regions) {
     return Stack(
       children: [
-        /*Positioned(
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Image.asset(
-              "assets/bg01.png",
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),*/
         Center(
           heightFactor: MediaQuery.of(context).size.height * .5,
           widthFactor: MediaQuery.of(context).size.width,
@@ -70,7 +54,8 @@ class _RegionState extends State<Region> {
               scrollDirection: Axis.horizontal,
               itemCount: regions.length,
               itemBuilder: (context, index) {
-                return builCardRegion(context,regions,index);
+                return builCardRegion(
+                    index: index, context: context, regions: regions);
               },
             ),
           ),
