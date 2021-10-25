@@ -1,8 +1,8 @@
 
 class BaseApi {
 
-  // static const String baseUrl = 'http://10.0.2.2:8000/api/v1/'; // mac offline
-  static const String baseUrl = 'http://192.168.1.67:8000/api/v1/'; // win offline
+   static const String baseUrl = 'http://10.0.2.2:8000/api/v1/'; // mac offline
+  //static const String baseUrl = 'http://192.168.1.67:8000/api/v1/'; // win offline
   // static const String baseUrl = ''; // production
 
   static const String URL_LOGIN = baseUrl + 'signin';

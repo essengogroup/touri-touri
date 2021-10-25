@@ -8,6 +8,7 @@ import 'package:touritouri/screens/index.dart';
 import 'package:touritouri/screens/login_register/register.dart';
 import 'package:touritouri/utils/constant.dart';
 import 'package:http/http.dart' as http;
+import 'package:touritouri/utils/preference.dart';
 
 
 class Login extends StatefulWidget {
@@ -20,6 +21,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   late TextEditingController _controllerLogin;
   late TextEditingController _controllerPassword;
+  late SharedPref pref;
 
   Future login() async {
     var response = await http.post(Uri.parse(BaseApi.URL_LOGIN), body: {
@@ -33,6 +35,20 @@ class _LoginState extends State<Login> {
 
       print(datas["token"]);
 
+      var _user = datas["user"] ;
+      User user = User(
+        id: _user["id"],
+        name: _user["name"],
+        first_name: _user["first_name"],
+        address: _user["address"],
+        email: _user["email"],
+        phone: _user["phone"]
+      );
+
+      pref.setToken(datas["token"]);
+      pref.addUser(user);
+      pref.setLogging(true);
+
       Navigator.push(context, MaterialPageRoute(builder: (context)=>Index(),),);
     }else{
 
@@ -44,6 +60,17 @@ class _LoginState extends State<Login> {
     super.initState();
     _controllerLogin = TextEditingController();
     _controllerPassword = TextEditingController();
+    pref = SharedPref();
+
+    pref.isLogged().then((isConnected){
+      if(isConnected){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>const Index(),),);
+      }
+    });
+
+    pref.getUser().then((newUser){
+      print(newUser.toString());
+    });
   }
 
   @override

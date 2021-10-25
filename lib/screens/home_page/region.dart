@@ -1,8 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:touritouri/models/region_model.dart';
-import 'package:touritouri/screens/home_page/region_site.dart';
 import 'package:touritouri/services/region_api.dart';
 import 'package:touritouri/widgets/build_card_region.dart';
 

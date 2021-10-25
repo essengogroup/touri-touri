@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:touritouri/models/tabbarHome/tabBarHome.dart';
 import 'package:touritouri/screens/home_page/region.dart';
 import 'package:touritouri/screens/home_page/sites.dart';
 import 'package:touritouri/widgets/app_bar_widget.dart';
