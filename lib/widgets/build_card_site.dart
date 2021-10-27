@@ -20,67 +20,67 @@ Widget builCardSite({
           height: 185,
           width: double.infinity,
           child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  sites[index].imagePath!,
-                  fit: BoxFit.cover,
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                ),
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                sites[index].imagePath!,
+                fit: BoxFit.cover,
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
               ),
-              Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.scale,
-                            alignment: Alignment.bottomCenter,
-                            duration: const Duration(seconds: 1),
-                            child:  DetailSite(index: index)));
-                  },
-                  splashColor: Colors.blue.withOpacity(0.4),
-                  child: Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.black45,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            // const Text('2.5',style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
-                            const SizedBox(
-                              width: 4.0,
+            ),
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.scale,
+                          alignment: Alignment.bottomCenter,
+                          duration: const Duration(seconds: 1),
+                          child:  DetailSite(index: index,site: sites[index])));
+                },
+                splashColor: Colors.blue.withOpacity(0.4),
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.black45,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // const Text('2.5',style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
+                          const SizedBox(
+                            width: 4.0,
+                          ),
+                          RatingBarIndicator(
+                            rating: 2.5,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
                             ),
-                            RatingBarIndicator(
-                              rating: 2.5,
-                              itemBuilder: (context, index) => const Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                              ),
-                              itemCount: 5,
-                              itemSize: 32.0,
-                              direction: Axis.horizontal,
-                            ),
-                          ],
-                        ),
-                        // const SizedBox(height: 6),
-                      ],
-                    ),
+                            itemCount: 5,
+                            itemSize: 32.0,
+                            direction: Axis.horizontal,
+                          ),
+                        ],
+                      ),
+                      // const SizedBox(height: 6),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),

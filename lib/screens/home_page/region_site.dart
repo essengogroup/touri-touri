@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:touritouri/models/region_model.dart';
 import 'package:touritouri/models/site_model.dart';
 import 'package:touritouri/widgets/build_card_site.dart';
+import 'package:touritouri/widgets/build_icon_shop_cart.dart';
 
 class RegionSite extends StatefulWidget {
   final List<RegionModel> regionModels;
@@ -27,6 +28,10 @@ class _RegionSiteState extends State<RegionSite> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("site d'une region"),
+        actions: [
+          builIconShopCart(context),
+          const SizedBox(width: 8.0,)
+        ],
         bottom: PreferredSize(
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 16.0),

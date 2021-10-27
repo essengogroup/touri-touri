@@ -19,7 +19,7 @@ class _ActivityPageState extends State<ActivityPage> {
     activities = _itemActivity();
 
     return  Scaffold(
-      appBar: appBarWidget(context),
+      appBar: appBarWidget(context,(){}),
       body: SingleChildScrollView(
         child: Column(
           children: [

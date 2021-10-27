@@ -20,7 +20,7 @@ class _TrophyPageState extends State<TrophyPage> {
     trophes = _itemTrophe();
 
     return  Scaffold(
-        appBar: appBarWidget(context),
+        appBar: appBarWidget(context,(){}),
         body: Column(
           children: [
             Text(

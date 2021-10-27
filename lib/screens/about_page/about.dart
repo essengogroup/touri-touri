@@ -3,8 +3,6 @@ import 'package:touritouri/utils/constant.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'dart:async';
 
-
-
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
 
@@ -13,7 +11,7 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-  late  PackageInfo _packageInfo = PackageInfo(
+  late PackageInfo _packageInfo = PackageInfo(
     appName: 'Unknown',
     packageName: 'Unknown',
     version: 'Unknown',
@@ -41,15 +39,14 @@ class _AboutState extends State<About> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("à propos"),
+        title: const Text("à propos"),
       ),
       body: Center(
-        child:Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Center(
@@ -59,8 +56,17 @@ class _AboutState extends State<About> {
                 width: 100.0,
               ),
             ),
-            _infoTile('App name', _packageInfo.appName),
-            _infoTile('App version', _packageInfo.version),
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 32.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _infoTile('App name', _packageInfo.appName),
+                  _infoTile('App version', _packageInfo.version),
+                ],
+              ),
+            ),
           ],
         ),
       ),
