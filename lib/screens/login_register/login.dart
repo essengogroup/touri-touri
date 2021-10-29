@@ -49,7 +49,9 @@ class _LoginState extends State<Login> {
       pref.addUser(user);
       pref.setLogging(true);
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Index(),),);
+      // Navigator.push(context, MaterialPageRoute(builder: (context)=>Index(),),);
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => Index()), (route) => false);
     }else{
 
     }
@@ -64,7 +66,9 @@ class _LoginState extends State<Login> {
 
     pref.isLogged().then((isConnected){
       if(isConnected){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>const Index(),),);
+        // Navigator.push(context, MaterialPageRoute(builder: (context)=>const Index(),),);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => Index()), (route) => false);
       }
     });
 

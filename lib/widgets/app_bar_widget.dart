@@ -7,7 +7,6 @@ import 'package:touritouri/widgets/build_icon_shop_cart.dart';
 
 AppBar appBarWidget(BuildContext context, VoidCallback refresh) {
   return AppBar(
-    elevation: 0,
     title: const Text(
       'Touri-Touri',
       style: TextStyle(color: Colors.white),
