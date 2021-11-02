@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:touritouri/models/activity_model.dart';
 import 'package:touritouri/models/event_model.dart';
 import 'package:touritouri/services/activity_api.dart';
@@ -20,7 +21,7 @@ class _ActivityPageState extends State<ActivityPage> {
   late List<ActivityModel> activities;
   late Future<List<EventModel>> getAllEvent;
   late Future<List<ActivityModel>> getAllActivity;
-  late List<EventModel> itemsEvents = [
+  /*late List<EventModel> itemsEvents = [
     EventModel(
         id: 1,
         name: 'event1',
@@ -48,8 +49,8 @@ class _ActivityPageState extends State<ActivityPage> {
         price: 15000,
         dateBegin: "28 Oct. 2021",
         dateEnd: "28 Nov. 2021"),
-  ];
-  late List<ActivityModel> itemsActivity = [
+  ];*/
+  /*late List<ActivityModel> itemsActivity = [
     ActivityModel(
         id: 1,
         name: 'activity1',
@@ -64,7 +65,7 @@ class _ActivityPageState extends State<ActivityPage> {
         imagePath: "https://picsum.photos/200/300",
         price: 4000,
         updatedAt: "28 Nov. 2021"),
-  ];
+  ];*/
   CarouselController carouselController = CarouselController();
 
   @override
@@ -92,7 +93,7 @@ class _ActivityPageState extends State<ActivityPage> {
                 final data = snapshot.data!;
                 List<EventModel> dataEventModels = data[0]! as List<EventModel>;
                 List<ActivityModel> dataActivityModels = data[1]! as List<ActivityModel>;
-                return buildContent();
+                return buildContent(itemEvents: dataEventModels,itemActivities:dataActivityModels);
               }
           }
         },
@@ -137,7 +138,7 @@ class _ActivityPageState extends State<ActivityPage> {
           height: 2.0,
         ),
         SizedBox(
-          height: 200,
+          height: 150,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: listEvent.length,
@@ -186,18 +187,80 @@ class _ActivityPageState extends State<ActivityPage> {
   buildListActivity({required List<ActivityModel> listActivity}) {
     return Column(
       children: listActivity
-          .map((e) =>
+          .map((activity) =>
           Container(
             margin: const EdgeInsets.only(bottom: 8.0),
             width: double.infinity,
-            height: 100,
-            color: Colors.blueGrey,
+            height: 200,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      activity.imagePath,
+                      fit: BoxFit.cover,
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+
+                      },
+                      splashColor: Colors.blue.withOpacity(0.4),
+                      child: Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.black45,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                // const Text('2.5',style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
+                                const SizedBox(
+                                  width: 4.0,
+                                ),
+                                RatingBarIndicator(
+                                  rating: 2.5,
+                                  itemBuilder: (context, index) => const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  itemCount: 5,
+                                  itemSize: 32.0,
+                                  direction: Axis.horizontal,
+                                ),
+                              ],
+                            ),
+                            // const SizedBox(height: 6),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ))
           .toList(),
     );
   }
 
-  Widget buildContent() =>
+  Widget buildContent({
+  required List<EventModel> itemEvents,
+  required List<ActivityModel> itemActivities,
+}) =>
       ListView(
         children: [
           SizedBox(
@@ -214,7 +277,7 @@ class _ActivityPageState extends State<ActivityPage> {
                   //0.8
                   initialPage: 0,
                   enlargeCenterPage: true),
-              items: itemsEvents.map((item) {
+              items: itemEvents.map((item) {
                 return Builder(
                   builder: (BuildContext context) {
                     return buildImageSlider(context, item);
@@ -229,7 +292,7 @@ class _ActivityPageState extends State<ActivityPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: buildListEvent(
-                title: 'Evenement', linkAll: () {}, listEvent: itemsEvents),
+                title: 'Evenements', linkAll: () {}, listEvent: itemEvents),
           ),
           const SizedBox(
             height: 4.0,
@@ -267,7 +330,7 @@ class _ActivityPageState extends State<ActivityPage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: buildListActivity(listActivity: itemsActivity),
+            child: buildListActivity(listActivity: itemActivities),
           )
         ],
       );

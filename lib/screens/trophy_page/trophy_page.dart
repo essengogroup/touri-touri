@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:touritouri/models/trophe_model.dart';
+import 'package:touritouri/models/trophet_model.dart';
+import 'package:touritouri/services/trophet_api.dart';
 import 'package:touritouri/utils/constant.dart';
 import 'package:touritouri/widgets/app_bar_widget.dart';
 
@@ -13,38 +14,68 @@ class TrophyPage extends StatefulWidget {
 
 class _TrophyPageState extends State<TrophyPage> {
 
-  late List<TropheModel> trophes;
+  late Future<List<TrophetModel>> getAlltrophet;
+
+  @override
+  void initState() {
+    super.initState();
+    getAlltrophet = TrophetApi.getAllTrophet();
+  }
 
   @override
   Widget build(BuildContext context) {
-    trophes = _itemTrophe();
-
-    return  Scaffold(
-        appBar: appBarWidget(context,(){}),
+    return Scaffold(
+        appBar: appBarWidget(context, () {}),
         body: Column(
           children: [
-            Text(
-              "Mes trophées",
-              style: Theme.of(context)
-                  .textTheme.headline6!
-                  .copyWith(color: Kblack),
+            SizedBox(
+              height: 200,
+              child: Stack(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    color: Colors.grey,
+                  ),
+                  Positioned(
+                      top:100,
+                      left: 0,
+                      child: Text(
+                    "Mes trophées",
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(color: Kblack),
+                  )
+                  )
+
+                ],
+              ),
             ),
-            SizedBox(child: _gridView()),
+            Expanded(
+                child: FutureBuilder<List<TrophetModel>>(
+                  future: getAlltrophet,
+                  builder: (context, snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return const Center(child: CircularProgressIndicator());
+                      default:
+                        if (snapshot.hasError) {
+                          return const Center(child: Text('error'));
+                        } else {
+                          return _gridView(snapshot.data!);
+                        }
+                    }
+                  },
+                )
+            ),
           ],
         )
     );
   }
 
-  List<TropheModel> _itemTrophe() {
-    return[
-      TropheModel(name: "Trophé 1", image: "assets/images/r-01.jpg"),
-      TropheModel(name: "Trophé 1", image: "assets/images/r-02.jpg"),
-      TropheModel(name: "Trophé 1", image: "assets/images/r-03.jpg"),
-      TropheModel(name: "Trophé 4", image: "assets/images/r-03.jpg")
-    ];
-  }
-
-  Widget _gridView() {
+  Widget _gridView(List<TrophetModel> trophetModels) {
     return GridView.count(
       shrinkWrap: true,
       crossAxisCount: 2,
@@ -52,13 +83,13 @@ class _TrophyPageState extends State<TrophyPage> {
       crossAxisSpacing: 8,
       childAspectRatio: 1.3,
       padding: const EdgeInsets.all(8.0),
-      children: trophes.map(
-            (activity) => _itemActivityCard(context, activity),
+      children: trophetModels.map(
+            (trophetModel) => _itemActivityCard(context, trophetModel),
       ).toList(),
     );
   }
 
-  Widget _itemActivityCard(BuildContext context, TropheModel trophe){
+  Widget _itemActivityCard(BuildContext context, TrophetModel trophet) {
     return Material(
       color: Kgrey_fad,
       shape: RoundedRectangleBorder(
@@ -73,10 +104,10 @@ class _TrophyPageState extends State<TrophyPage> {
             SizedBox(
               height: 100.0,
               child: Stack(
-                  children:[
+                  children: [
                     Positioned.fill(
                       child: Image.asset(
-                        trophe.image,
+                        trophet.imagePath,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -87,9 +118,11 @@ class _TrophyPageState extends State<TrophyPage> {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    trophe.name,
-                    style: Theme.of(context)
-                        .textTheme.subtitle2!
+                    trophet.name,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .subtitle2!
                         .copyWith(color: Kblack),
                   ),
                 )
