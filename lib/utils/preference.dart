@@ -6,7 +6,7 @@ import 'package:touritouri/models/user.dart';
 class SharedPref{
   late String token;
 
-  Future<SharedPreferences> _prefs =  SharedPreferences.getInstance();
+  final Future<SharedPreferences> _prefs =  SharedPreferences.getInstance();
 
   SharedPref();
 

@@ -19,8 +19,7 @@ class DetailSite extends StatefulWidget {
 }
 
 class _DetailSiteState extends State<DetailSite> {
-
- late final List itmes = [];
+  late final List itmes = [];
   final multiSelectKey = GlobalKey<State>();
 
   @override
@@ -35,22 +34,13 @@ class _DetailSiteState extends State<DetailSite> {
             children: [
               SizedBox(
                 height: 400,
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
+                width: MediaQuery.of(context).size.width,
                 child: ClipRRect(
                   child: Image.network(
                     "https://picsum.photos/200", //widget.site.imagePath!,
                     fit: BoxFit.cover,
-                    height: MediaQuery
-                        .of(context)
-                        .size
-                        .height,
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
                   ),
                 ),
               ),
@@ -68,151 +58,151 @@ class _DetailSiteState extends State<DetailSite> {
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              padding:
-              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        raintingAction();
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(2.0),
-                        child: RatingBarIndicator(
-                          rating: 2.5,
-                          itemBuilder: (context, index) =>
-                          const Icon(
-                            Icons.star,
-                            color: Colors.amber,
+      body: Builder(
+        builder: (context) => SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          raintingAction();
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(2.0),
+                          child: RatingBarIndicator(
+                            rating: 2.5,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            itemCount: 5,
+                            itemSize: 21.0,
+                            direction: Axis.horizontal,
                           ),
-                          itemCount: 5,
-                          itemSize: 21.0,
-                          direction: Axis.horizontal,
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.favorite_outlined,
+                    Expanded(
+                      child: TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.favorite_outlined,
+                        ),
+                        label: const Text('32'),
                       ),
-                      label: const Text('32'),
                     ),
-                  ),
-                  Expanded(
-                    child: TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.insert_comment_outlined,
+                    Expanded(
+                      child: TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.insert_comment_outlined,
+                        ),
+                        label: const Text('32'),
                       ),
-                      label: const Text('32'),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding:
-              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.place,
-                    color: Colors.grey.shade600,
-                    size: 24,
-                  ),
-                  const SizedBox(
-                    width: 4.0,
-                  ),
-                  const Text('Nom de la region')
-                ],
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.place,
+                      color: Colors.grey.shade600,
+                      size: 24,
+                    ),
+                    const SizedBox(
+                      width: 4.0,
+                    ),
+                    const Text('Nom de la region')
+                  ],
+                ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-              child: Text(
-                'Nom du site',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 26,
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+                child: Text(
+                  'Nom du site',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+              ),
+              const Divider(),
+              const SizedBox(
+                height: 8.0,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+                child: Text(
+                  'DESCRIPTION'.toUpperCase(),
+                  maxLines: 1,
+                  textAlign: TextAlign.start,
+                  style: const TextStyle(
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-            ),
-            const Divider(),
-            const SizedBox(
-              height: 8.0,
-            ),
-            Padding(
-              padding:
-              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-              child: Text(
-                'DESCRIPTION'.toUpperCase(),
-                maxLines: 1,
-                textAlign: TextAlign.start,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-              child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur vestibulum arcu, at imperdiet neque aliquam a. Aenean ac massa vulputate, tincidunt neque quis, rhoncus orci.',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+                child: Text(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur vestibulum arcu, at imperdiet neque aliquam a. Aenean ac massa vulputate, tincidunt neque quis, rhoncus orci.',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
                 ),
               ),
-            ),
-            const Divider(),
-            const SizedBox(
-              height: 4.0,
-            ),
-            Padding(
-              padding:
-              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-              child: TextButton(
-                onPressed: () {
-                  modal();
-                },
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Colors.blue,
-                  onSurface: Colors.grey,
-                  elevation: 5,
-                ),
-                child: const Text('reservation'),
+              const Divider(),
+              const SizedBox(
+                height: 4.0,
               ),
-            ),
-            const SizedBox(
-              height: 4.0,
-            ),
-            const Divider(),
-            const SizedBox(
-              height: 4.0,
-            ),
-            Column(
-                children: ['A', 'B','ok']
-                    .map((util) =>
-                    builListVertical(
-                        title: util, listUtilItem: ['A', 'B', 'C']))
-                    .toList()),
-          ],
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+                child: TextButton(
+                  onPressed: () {
+                    modal(context);
+                  },
+                  style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.blue,
+                    onSurface: Colors.grey,
+                    elevation: 5,
+                  ),
+                  child: const Text('reservation'),
+                ),
+              ),
+              const SizedBox(
+                height: 4.0,
+              ),
+              const Divider(),
+              const SizedBox(
+                height: 4.0,
+              ),
+              Column(
+                  children: ['element1', 'element2', 'element3']
+                      .map((util) => builListVertical(
+                          title: util, listUtilItem: ['A', 'B', 'C']))
+                      .toList()),
+            ],
+          ),
         ),
       ),
     );
@@ -236,17 +226,17 @@ class _DetailSiteState extends State<DetailSite> {
             ),
             const SizedBox(height: 8.0),
             SizedBox(
-                height: 200,
-                child: ListView.builder(
+              height: 200,
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: listUtilItem.length,
-                itemBuilder: (context, index) =>
-                    buildCardUtil(
-                        context: context,
-                        index: index,
-                        items: itmes,),
+                itemBuilder: (context, index) => buildCardUtil(
+                  context: context,
+                  index: index,
+                  items: itmes,
+                ),
               ),
-                /*child: MultiSelectChipField(
+              /*child: MultiSelectChipField(
                   items: _items,
                   key: multiSelectKey,
                   itemBuilder: (item, state) {
@@ -267,15 +257,52 @@ class _DetailSiteState extends State<DetailSite> {
         ),
       );
 
-  modal() {
+  modal(BuildContext context) {
     return showMaterialModalBottomSheet(
       context: context,
       builder: (context) =>
           SingleChildScrollView(
             controller: ModalScrollController.of(context),
             child: Container(
-              height: 400,
-              color: Colors.green,
+              height: 450,
+              color: Colors.black12,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0,vertical: 4.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                        child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text('Prix du site'),
+
+                                    Expanded(child: Text("32000"))
+                                  ],
+                                ),
+                              ],
+                            ))),
+                    Padding(
+                      padding:
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+                      child: TextButton(
+                        onPressed: () {
+                          modal(context);
+                        },
+                        style: TextButton.styleFrom(
+                          primary: Colors.white,
+                          backgroundColor: Colors.blue,
+                          onSurface: Colors.grey,
+                          elevation: 5,
+                        ),
+                        child: const Text('valider'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
     );
@@ -284,39 +311,37 @@ class _DetailSiteState extends State<DetailSite> {
   raintingAction() {
     return showDialog<String>(
       context: context,
-      builder: (BuildContext context) =>
-          AlertDialog(
-            title: const Text('Noter le site'),
-            content: Container(
-              padding: EdgeInsets.all(8.0),
-              child: RatingBar.builder(
-                initialRating: 3,
-                minRating: 1,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                itemBuilder: (context, _) =>
-                    Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                onRatingUpdate: (rating) {
-                  print(rating);
-                },
-              ),
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Noter le site'),
+        content: Container(
+          padding: EdgeInsets.all(8.0),
+          child: RatingBar.builder(
+            initialRating: 3,
+            minRating: 1,
+            direction: Axis.horizontal,
+            allowHalfRating: true,
+            itemCount: 5,
+            itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+            itemBuilder: (context, _) => Icon(
+              Icons.star,
+              color: Colors.amber,
             ),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'Cancel'),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: const Text('OK'),
-              ),
-            ],
+            onRatingUpdate: (rating) {
+              print(rating);
+            },
           ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'Cancel'),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
     );
   }
 }

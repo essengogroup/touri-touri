@@ -7,6 +7,7 @@ import 'package:touritouri/widgets/build_icon_shop_cart.dart';
 
 AppBar appBarWidget(BuildContext context, VoidCallback refresh) {
   return AppBar(
+    backgroundColor: Colors.lightBlue,
     title: const Text(
       'Touri-Touri',
       style: TextStyle(color: Colors.white),
@@ -71,6 +72,7 @@ void selectedItem(BuildContext context, item, VoidCallback refresh) {
 
 SliverAppBar sliverAppWidget({required BuildContext context, TabBar? bottom, VoidCallback? refresh}) {
   return SliverAppBar(
+    backgroundColor: Colors.lightBlue,
     title: const Text('Touri-Touri'),
     pinned: true,
     floating: true,

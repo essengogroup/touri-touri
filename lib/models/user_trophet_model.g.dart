@@ -10,7 +10,7 @@ UserTrophetModel _$UserTrophetModelFromJson(Map<String, dynamic> json) {
   return UserTrophetModel(
     id: json['id'] as int,
     name: json['name'] as String,
-    imagePath: json['imagePath'] as String,
+    imagePath: json['imagePath'] as String?,
     point: json['point'] as int,
   );
 }

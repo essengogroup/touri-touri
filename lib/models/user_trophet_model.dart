@@ -5,11 +5,11 @@ part 'user_trophet_model.g.dart';
 class UserTrophetModel{
   final int id;
   final String name;
-  final String imagePath;
+  final String? imagePath;
   final int point;
 
 
-  UserTrophetModel({required this.id,required this.name,required this.imagePath,required this.point});
+  UserTrophetModel({required this.id,required this.name,this.imagePath,required this.point});
 
   factory UserTrophetModel.fromJson(Map<String, dynamic> json)=>_$UserTrophetModelFromJson(json);
 

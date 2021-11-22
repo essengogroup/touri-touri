@@ -15,19 +15,20 @@ class _PersonPageState extends State<PersonPage> {
   final double coverHeight = 170;//200
   final double profilHeight = 96;//144
 
-  late SharedPref pref;
-  late User user = User() ;
+  // late SharedPref pref;
+  // late User user = User() ;
 
-  loadUser () async {
-    await pref.getUser().then((newUser){
-      user =newUser;
-    });
-  }
+  // loadUser () async {
+  //   await pref.getUser().then((newUser){
+  //     user =newUser;
+  //   });
+  // }
 
   @override
   void initState() {
-    pref = SharedPref();
-    loadUser();
+    super.initState();
+    // pref = SharedPref().isLogged();
+    // loadUser();
   }
 
   @override
@@ -37,27 +38,27 @@ class _PersonPageState extends State<PersonPage> {
         appBar: appBarWidget(context,(){}),
         body: ListView(
           padding: EdgeInsets.zero,
-          children: <Widget>[builTop(), builContent(user,pref)],
+          children: <Widget>[builTop(), builContent()],
         ));
   }
 
-  Widget builContent(User user,SharedPref pref ) {
+  Widget builContent() {
     return Column(
       children: [
         const SizedBox(
           height: 10,
         ),
         Text(
-          user.first_name!,
-          style: TextStyle(
+          'user.first_name!',
+          style: const TextStyle(
               fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
         ),
         const SizedBox(
           height: 8.0,
         ),
         Text(
-          user.name!,
-          style: TextStyle(fontSize: 16, color: Colors.black54),
+          'user.name!',
+          style: const TextStyle(fontSize: 16, color: Colors.black54),
         ),
         const SizedBox(
           height: 16.0,
@@ -65,19 +66,19 @@ class _PersonPageState extends State<PersonPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildIcon(Icons.map,pref),
+            buildIcon(Icons.map),
             const SizedBox(
               width: 12.0,
             ),
-            buildIcon(Icons.face_outlined,pref),
+            buildIcon(Icons.face_outlined),
             const SizedBox(
               width: 12.0,
             ),
-            buildIcon(Icons.tune,pref),
+            buildIcon(Icons.tune),
             const SizedBox(
               width: 12.0,
             ),
-            buildIcon(Icons.image,pref),
+            buildIcon(Icons.image),
           ],
         ),
         const SizedBox(
@@ -116,7 +117,7 @@ class _PersonPageState extends State<PersonPage> {
     );
   }
 
-  Widget buildIcon(IconData iconData,SharedPref pref ) {
+  Widget buildIcon(IconData iconData) {
     return CircleAvatar(
       radius: 25,
       child: Material(
@@ -125,7 +126,7 @@ class _PersonPageState extends State<PersonPage> {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            pref.loggout(context, MaterialPageRoute(builder: (context) => const Login()));
+            // pref.loggout(context, MaterialPageRoute(builder: (context) => const Login()));
           },
           child: Center(
             child: Icon(
@@ -185,7 +186,7 @@ class _PersonPageState extends State<PersonPage> {
         radius: profilHeight / 2,
         backgroundColor: Colors.grey.shade800,
         backgroundImage:
-        NetworkImage('https://picsum.photos/200'),
+        const NetworkImage('https://picsum.photos/200'),
       ),
     );
   }

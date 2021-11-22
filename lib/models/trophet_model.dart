@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:touritouri/models/user_trophet_model.dart';
+
 part 'trophet_model.g.dart';
 
 @JsonSerializable()
@@ -10,20 +11,22 @@ class TrophetModel {
   final String imagePath;
   final String updatedAt;
   final String createdAt;
-  final List<UserTrophetModel> users;
+  final List<UserTrophetModel?>? users;
 
-  TrophetModel(
-      {required this.id,
-      required this.name,
-      required this.description,
-      required this.imagePath,
-      required this.updatedAt,
-      required this.createdAt,
-      required this.users,});
+  TrophetModel({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.imagePath,
+    required this.updatedAt,
+    required this.createdAt,
+    this.users,
+  });
 
-  factory TrophetModel.fromJson(Map<String, dynamic> json)=>_$TrophetModelFromJson(json);
+  factory TrophetModel.fromJson(Map<String, dynamic> json) =>
+      _$TrophetModelFromJson(json);
 
-  Map<String, dynamic> toJson()=>_$TrophetModelToJson(this);
+  Map<String, dynamic> toJson() => _$TrophetModelToJson(this);
 
   @override
   String toString() {

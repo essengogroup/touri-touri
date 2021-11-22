@@ -20,6 +20,7 @@ class _TrophyPageState extends State<TrophyPage> {
   void initState() {
     super.initState();
     getAlltrophet = TrophetApi.getAllTrophet();
+    print(getAlltrophet);
   }
 
   @override
@@ -126,7 +127,7 @@ class _TrophyPageState extends State<TrophyPage> {
                         .copyWith(color: Kblack),
                   ),
                 )
-            )
+            ),
           ],
         ),
       ),
