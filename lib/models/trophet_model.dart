@@ -8,19 +8,19 @@ class TrophetModel {
   final int id;
   final String name;
   final String description;
-  final String imagePath;
+  final String? imagePath;
   final String updatedAt;
   final String createdAt;
-  final List<UserTrophetModel?>? users;
+  // final List<UserTrophetModel?>? users;
 
   TrophetModel({
     required this.id,
     required this.name,
     required this.description,
-    required this.imagePath,
+    this.imagePath,
     required this.updatedAt,
     required this.createdAt,
-    this.users,
+    // this.users,
   });
 
   factory TrophetModel.fromJson(Map<String, dynamic> json) =>
@@ -30,6 +30,6 @@ class TrophetModel {
 
   @override
   String toString() {
-    return 'TrophetModel{id: $id, name: $name, description: $description, imagePath: $imagePath, updatedAt: $updatedAt, createdAt: $createdAt, users: $users}';
+    return 'TrophetModel{id: $id, name: $name, description: $description, imagePath: $imagePath, updatedAt: $updatedAt, createdAt: $createdAt}';
   }
 }

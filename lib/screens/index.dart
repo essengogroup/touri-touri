@@ -57,7 +57,7 @@ class _IndexState extends State<Index> {
               items: items,
               index: index,
               height: 60,
-              color: Colors.lightBlue,
+              color: Colors.blue,
               backgroundColor: Colors.transparent,
               onTap: (index) => setState(() => this.index = index),
             ),

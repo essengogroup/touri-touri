@@ -5,9 +5,32 @@ import 'package:touritouri/screens/cart_page/cart_page.dart';
 import 'package:touritouri/utils/constant.dart';
 import 'package:touritouri/widgets/build_icon_shop_cart.dart';
 
+AppBar appBarProfileWidget(BuildContext context, VoidCallback refresh) {
+  return AppBar(
+    backgroundColor: Colors.blue,
+    title: const Text(
+      'Touri-Touri',
+      style: TextStyle(color: Colors.white),
+    ),
+    actions: [
+      builIconShopCart(context),
+      IconButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const CartPage()));
+          },
+          icon: const Icon(
+            Icons.edit_outlined,
+            color: Colors.white,
+            size: 24,
+          )),
+    ],
+  );
+}
+
 AppBar appBarWidget(BuildContext context, VoidCallback refresh) {
   return AppBar(
-    backgroundColor: Colors.lightBlue,
+    backgroundColor: Colors.blue,
     title: const Text(
       'Touri-Touri',
       style: TextStyle(color: Colors.white),
@@ -16,7 +39,7 @@ AppBar appBarWidget(BuildContext context, VoidCallback refresh) {
       builIconShopCart(context),
       Theme(
         data: Theme.of(context)
-            .copyWith(iconTheme: IconThemeData(color: Colors.white)),
+            .copyWith(iconTheme: const IconThemeData(color: Colors.white)),
         child: PopupMenuButton<int>(
           color: Colors.white,
           itemBuilder: (context) => [
@@ -53,14 +76,16 @@ AppBar appBarWidget(BuildContext context, VoidCallback refresh) {
     ],
   );
 }
+
 void selectedItem(BuildContext context, item, VoidCallback refresh) {
   switch (item) {
-  // case 0:
-  //   var refresh2 = refresh;
-  //   refresh2();
-  //   break;
+    // case 0:
+    //   var refresh2 = refresh;
+    //   refresh2();
+    //   break;
     case 0:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const About()) );
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const About()));
       break;
     case 1:
       print("User Logged out");
@@ -70,9 +95,10 @@ void selectedItem(BuildContext context, item, VoidCallback refresh) {
   }
 }
 
-SliverAppBar sliverAppWidget({required BuildContext context, TabBar? bottom, VoidCallback? refresh}) {
+SliverAppBar sliverAppWidget(
+    {required BuildContext context, TabBar? bottom, VoidCallback? refresh}) {
   return SliverAppBar(
-    backgroundColor: Colors.lightBlue,
+    backgroundColor: Colors.blue,
     title: const Text('Touri-Touri'),
     pinned: true,
     floating: true,
@@ -118,5 +144,3 @@ SliverAppBar sliverAppWidget({required BuildContext context, TabBar? bottom, Voi
     bottom: bottom,
   );
 }
-
-

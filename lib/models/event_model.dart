@@ -7,7 +7,7 @@ class EventModel {
   final String name;
   final String description;
   final String imagePath;
-  final List<String> tags;
+  // final List<String> tags;
   final int price;
   final String dateBegin;
   final String dateEnd;
@@ -17,7 +17,7 @@ class EventModel {
       required this.name,
       required this.description,
       required this.imagePath,
-      required this.tags,
+      // required this.tags,
       required this.price,
       required this.dateBegin,
       required this.dateEnd});
@@ -28,6 +28,6 @@ class EventModel {
 
   @override
   String toString() {
-    return 'EventModel{id: $id, name: $name, description: $description, imagePath: $imagePath, tags: $tags, price: $price, dateBegin: $dateBegin, dateEnd: $dateEnd}';
+    return 'EventModel{id: $id, name: $name, description: $description, imagePath: $imagePath, price: $price, dateBegin: $dateBegin, dateEnd: $dateEnd}';
   }
 }

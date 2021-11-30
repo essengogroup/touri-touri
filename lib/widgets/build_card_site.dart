@@ -164,6 +164,15 @@ Widget builCardSite({
                         label: const Text('32'),
                       ),
                     ),
+                    Expanded(
+                      child: TextButton.icon(
+                        onPressed: (){},
+                        icon: const Icon(
+                          Icons.share_outlined,
+                        ),
+                        label: const Text('32'),
+                      ),
+                    ),
                   ],
                 ),
               )

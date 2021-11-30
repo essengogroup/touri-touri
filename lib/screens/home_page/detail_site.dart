@@ -37,7 +37,8 @@ class _DetailSiteState extends State<DetailSite> {
                 width: MediaQuery.of(context).size.width,
                 child: ClipRRect(
                   child: Image.network(
-                    "https://picsum.photos/200", //widget.site.imagePath!,
+                    // "https://picsum.photos/200", //widget.site.imagePath!,
+                   widget.site.imagePath!, //widget.site.imagePath!,
                     fit: BoxFit.cover,
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
@@ -123,18 +124,18 @@ class _DetailSiteState extends State<DetailSite> {
                     const SizedBox(
                       width: 4.0,
                     ),
-                    const Text('Nom de la region')
+                    Text(widget.site.regionName!)
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+               Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
                 child: Text(
-                  'Nom du site',
+                  widget.site.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
@@ -158,12 +159,12 @@ class _DetailSiteState extends State<DetailSite> {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+               Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
                 child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur vestibulum arcu, at imperdiet neque aliquam a. Aenean ac massa vulputate, tincidunt neque quis, rhoncus orci.',
+                  widget.site.description!,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
                   ),
@@ -176,17 +177,28 @@ class _DetailSiteState extends State<DetailSite> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-                child: TextButton(
-                  onPressed: () {
-                    modal(context);
-                  },
-                  style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor: Colors.blue,
-                    onSurface: Colors.grey,
-                    elevation: 5,
-                  ),
-                  child: const Text('reservation'),
+                child: Row(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        modal(context);
+                      },
+                      style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: Colors.blue,
+                        onSurface: Colors.grey,
+                        elevation: 5,
+                      ),
+                      child: const Text('reservation'),
+                    ),
+                    TextButton.icon(
+                      onPressed: (){},
+                      icon: const Icon(
+                        Icons.share_outlined,
+                      ),
+                      label: const Text('32'),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
